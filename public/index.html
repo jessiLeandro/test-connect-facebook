@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>React App</title>
+  </head>
+  <body>
+    <button href="http://localhost:8000/auth/google">
+      Log In with OAuth 2.0 Provider
+    </button>
+
+    <div>
+      <a href="/auth/google">Log In with OAuth 2.0 Provider</a>
+      <a href="/auth/facebook">Login with Facebook</a>
+    </div>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: "559462457958977",
+          cookie: true,
+          xfbml: true,
+          version: "dd9ec309ee72deaa062b6079e3a73072"
+        });
+
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+    </script>
+
+    <button onlogin="checkLoginState()">face</button>
+  </body>
+</html>
