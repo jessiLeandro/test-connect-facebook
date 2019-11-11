@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -24,7 +25,7 @@ passport.use(
     {
       clientID: "559462457958977",
       clientSecret: "dd9ec309ee72deaa062b6079e3a73072",
-      callbackURL: "http://127.0.0.1:8000/auth/facebook/callback"
+      callbackURL: `${process.env.URL}/auth/facebook/callback`
     },
     (token, refreshToken, profile, done) => done(null, { profile, token })
   )
@@ -95,6 +96,6 @@ app.get(
   }
 );
 
-app.listen(8000, () => {
-  console.log(`Server is running on 8000`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on ${process.env.PORT}`);
 });

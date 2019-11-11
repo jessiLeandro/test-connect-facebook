@@ -25,10 +25,10 @@ config.oAuthclientSecret = "4AtTR6vmhNl6ePDHijACYtnd";
 
 // The callback to use for OAuth requests. This is the URL where the app is
 // running. For testing and running it locally, use 127.0.0.1.
-config.oAuthCallbackUrl = "http://127.0.0.1:8000/auth/google/callback";
+config.oAuthCallbackUrl = `${process.env.URL}/auth/google/callback`;
 
 // The port where the app should listen for requests.
-config.port = 8080;
+config.port = process.env.PORT;
 
 // The scopes to request. The app requires the photoslibrary.readonly and
 // plus.me scopes.
